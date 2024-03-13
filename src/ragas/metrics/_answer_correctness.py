@@ -126,7 +126,7 @@ class AnswerCorrectness(MetricWithLLM, MetricWithEmbeddings):
                     "Invalid prediction format. Expected a list of dictionaries with keys 'TP', 'FP', 'FN'"
                 )
             else:
-                score = tp / (tp + 0.5 * (fp + fn)) if tp > 0 else 0
+                score = tp / (tp + fp) if tp > 0 else 0
         else:
             score = np.nan
 
